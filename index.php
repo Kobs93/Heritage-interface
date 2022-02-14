@@ -7,35 +7,52 @@ include 'comparable.php';
 include 'club.php';
 
 
+// Init les clubs
+$club = array();
+$club[1] = new Club(1, "Dijon", 63);
+$club[2] = new Club(2, "PSG", 67);
+$club[3] = new Club(3, "Nantes", 65);
 
-$listclub[]= new  club(1, "PSG", 234);
-$listclub[]= new  club(2,"OM",5);
-$listclub[]= new club(3,"OL",23);
+// Les sports de Dijon
+$sb = new SportBallon("Basketball", 5, 35, 45);
+$club[1]->AjouterSport($sb);
 
-$listclub[1]->AjouterSport(new sport("footbal", 33));
+// Les sports de PSG
+$sport1 = new Sport("Javelot", 1);
+$sport2 = new Sport("Judo", 1);
+$sportBallon1 = new SportBallon("Football", 11, 68, 105);
+$sportBallon2 = new SportBallon("Handball", 7, 35, 65);
+$sportRelais1 = new SportRelais("4 * 100", 400, 4);
+$club[2]->AjouterSport($sport1);
+$club[2]->AjouterSport($sport2);
+$club[2]->AjouterSport($sportBallon1);
+$club[2]->AjouterSport($sportBallon2);
+$club[2]->AjouterSport($sportRelais1);
 
-$listsport[] = new Sport("football", 11);
-$listsport[] = new SportRelais("4*100 m", 1, 400);
-$listsport[] = new SportRelais("100 m", 1, 100);
-$listsport[] = new SportRelais("200 m", 1, 200);
-$listsport[] = new  SportBallon("handball", 8, 40, 50);
-$listsport[] = new  SportBallon("basketball", 10, 40, 50);
-$listsport[] = new Sport("VTT", 1);
-$listsport[] = new Sport("tennis", 2);
-$listsport[] = new Sport("e-sport", 10);
-$listsportRelais = new SportRelais("braquage", 5, 10000);
+// Les sports Nantes
+$sport3 = new Sport("Cyclisme", 1);
+$sportBallon3 = new SportBallon("FootBall", 11, 68, 105);
+$sportBallon4 = new SportBallon("Ruby", 15, 65, 115);
+$sportRelais2 = new SportRelais("100m", 100, 1);
+$club[3]->AjouterSport($sport3);
+$club[3]->AjouterSport($sportBallon3);
+$club[3]->AjouterSport($sportBallon4);
+$club[3]->AjouterSport($sportRelais2);
 
-/*
-foreach ($listsport as $keyListsport => $valueListsport)
+
+//liste des clubs
+foreach ($club as $kclub => $vclub)
 {
-    echo"Nom du sport:". $valueListsport-> getNomSport(). " ". $valueListsport ->getDescription()."<br>";
+    echo'<a href="index.php?id='. $vclub-> getIdClub().'">'.$vclub->getNomClub().'</a><br>';
+
 }
-*/
 
-echo '<br>LISTE DES CLUBS :';
-echo "<a href="http://localhost:8042/PSG/%22%3E<br>PSG";
-echo "<a href="http://localhost:8042/Nante/%22%3E<br>Nante";
-echo "<a href="http://localhost:8042/saint-etienne/%22%3E<br>saint-etienne";
-echo "<a href="http://localhost:8042/OM/%22%3E<br>nul à chier";
-echo "<a href="http://localhost:8042/Ol/%22%3E<br>pas ouf";
-
+//liste des sports d'un club
+if ($_GET["id"])
+    echo "<br>CLUB".$club[$_GET["id"]]->getNomClub()."<br>";
+    foreach ($club[$_GET["id"]]->getLesSports() as $ksport => $vSport){
+}
+foreach ($club[2]->getLesSports()as $ksport => $vsport)
+{
+    echo $vsport->getNomSport()."<br>";
+}

@@ -52,7 +52,7 @@ class club implements comparable
     }
     public function AjouterSport(Sport $sport)
     {
-        $this->lesSports=$sport;
+        $this->lesSports[]=$sport;
     }
 
 
