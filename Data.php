@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 // Init les clubs
 $club = array();
 $club[1] = new Club(1, "Dijon", 63);

@@ -8,6 +8,7 @@ include 'SportRelais.php';
 include "data.php";
 echo '<a href="index.php">Accueil</a>';
 
+
 if (isset($_GET['id']) || isset($_POST['IdClub'])){
     if (isset($_GET['id'])){
         $idClub = $_GET['id'];
